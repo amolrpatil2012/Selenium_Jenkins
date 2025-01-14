@@ -40,8 +40,10 @@ public class AddRemoveItemBasketTest extends BasePage {
 		// creating an object of the automationtesting.co.uk webpage
 		Homepage home = new Homepage(driver);
 		home.getCookie().click();
-		
-		home.getTestStoreLink().click();
+		WebElement  element =  home.getTestStoreLink();
+		Actions actions = new Actions(driver);
+		actions.moveToElement(element).click().perform();
+		//home.getTestStoreLink().click();
 		//handle cookie visibility using JSE - added 20230217
 		//JavascriptExecutor jse = (JavascriptExecutor)getDriver();
 		//jse.executeScript("arguments[0].scrollIntoView()", home.getTestStoreLink()); 
