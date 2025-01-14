@@ -7,7 +7,7 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -49,7 +49,11 @@ public class BasePage {
 		System.setProperty("webdriver.chrome.driver",
 		System.getProperty("user.dir") + "\\src\\main\\java\\drivers\\chromedriver.exe");
 //		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		driver = new ChromeDriver();
+
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080");
+		driver = new ChromeDriver(options);
+
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
